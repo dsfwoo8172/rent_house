@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav w-100">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -15,6 +15,19 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>
+        <% if Current.user %>
+          <li class="nav-item ms-auto me-3">
+            <span class="nav-link">歡迎 <%= Current.user.email.capitalize %></span>
+          </li>
+          <li>
+            <%= button_to '登出', user_logout_path, method: :delete, class: 'btn btn-danger' %>
+          </li>
+        <% else %>
+          <li class="ms-auto">
+            <%= link_to '註冊', user_sign_up_path, class: 'btn btn-primary me-2' %>
+            <%= link_to '登入', user_sign_in_path, class: 'btn btn-outline-primary' %>
+          </li>
+        <% end %>
 
       </ul>
     </div>
