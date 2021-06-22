@@ -21,6 +21,10 @@
     <%= f.label :password_confirmation, '密碼確認' %>
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '請再輸入一次密碼' %>
   </div>
+  <div class="mb-3">
+    <%= f.label :phone, '手機號碼' %>
+    <%= f.text_field :phone, class: 'form-control', placeholder: '手機號碼' %>
+  </div>
   
   <%= f.button '註冊', class: 'btn btn-primary' %>
 <% end %>
