@@ -1,7 +1,7 @@
 class RentHousesController < ApplicationController
   before_action :set_rent_house, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 house
   def index
-    @rents = RentHouse.all #撈出所有物件
+    # @rents = RentHouse.all #撈出所有物件
   end
   
   def new
