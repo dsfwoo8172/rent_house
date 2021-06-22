@@ -1,7 +1,6 @@
 class RentHousesController < ApplicationController
   before_action :set_rent_house, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 house
   def index
-    @user = User.find_by(id: session[:user_id]) if session[:user_id] # 首頁需要顯示 user
     # @rents = RentHouse.all #撈出所有物件
   end
   
