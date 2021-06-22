@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+
+  # activerecord:
+  #   attributes:
+  #     user:
+  #       password: "密碼"
+  #       password_confirmation: "密碼確認"
+  #   errors:
+  #     models:
+  #       user:
+  #         attributes:
+  #           password:
+  #              blank: "不能為空白"
+  #              confirmation: "請再輸入一次密碼"
