@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/user/sign_up', to: 'registrations#new'
   post '/user/sign_up', to: 'registrations#create'
 
+  get '/user/edit_password', to: 'passwords#edit'
+  patch '/user/edit_password', to: 'passwords#update'
+
   get '/user/sign_in', to: 'sessions#new'
   post '/user/sign_in', to: 'sessions#create'
   

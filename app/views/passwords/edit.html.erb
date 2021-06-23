@@ -1,5 +1,5 @@
-<h1>註冊</h1>
-<%= form_with model: @user, url: user_sign_up_path do |f| %>
+<h1>更改密碼</h1>
+<%= form_with model: Current.user, url: user_edit_password_path do |f| %>
   
   <% if f.object.errors.any? %>
     <div class="alert alert-danger">
@@ -10,10 +10,6 @@
   <% end %>
 
   <div class="mb-3">
-    <%= f.label :email, '信箱' %>
-    <%= f.text_field :email, class: 'form-control', placeholder: 'Steven@gmail.com' %>
-  </div>
-  <div class="mb-3">
     <%= f.label :password, '密碼' %>
     <%= f.password_field :password, class: 'form-control', placeholder: '密碼'  %>
   </div>
@@ -21,10 +17,6 @@
     <%= f.label :password_confirmation, '密碼確認' %>
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '請再輸入一次密碼' %>
   </div>
-  <div class="mb-3">
-    <%= f.label :phone, '手機號碼' %>
-    <%= f.text_field :phone, class: 'form-control', placeholder: '手機號碼' %>
-  </div>
   
-  <%= f.button '註冊', class: 'btn btn-primary' %>
+  <%= f.button '更新密碼', class: 'btn btn-primary' %>
 <% end %>
