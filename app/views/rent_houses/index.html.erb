@@ -1,8 +1,115 @@
-<div class="bg-light py-4">
-  <div class="container">
-    <div class="d-flex w-50">
-       <input type="text" class="border w-100 px-3" placeholder="請輸入關鍵字 (縣市、區域、地址等...)">
-      <button class="py-1 search-btn"><i class="fas fa-search me-2"></i>搜尋</button>
+<%# 條件篩選開始 %>
+<div class="container bg-light mt-5">
+  <div class="accordion" id="accordionExample">
+    <div class="d-flex align-items-center pt-3">
+      <p class="mb-0 me-3 fw-bold">位置:</p>
+      <div class="accordion-item bg-light border-0 me-3">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            台北市
+          </button>
+        </h2>
+      </div>
+      <div class="accordion-item bg-light border-0 me-3">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            按鄉鎮選擇
+          </button>
+        </h2>
+      </div>
     </div>
+
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+  </div>
+  
+  <div class="type pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">類型:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">整層住家</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">獨立套房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">分租套房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">雅房</a>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">租金:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">5000元以下</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">5000-10000元</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">10000-20000元</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">20000-30000元</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">30000-40000元</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">40000-60000元</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">60000元以上</a>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">格局:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">1房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">2房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">3房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">4房</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">5房以上</a>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">坪數:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">10坪以下</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">10-20坪</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">20-30坪</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">30-40坪</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">40-50坪</a>
+    <a href="#" class="nav-link p-0 px-2 text-dark">50坪以上</a>
   </div>
 </div>
+<%# 條件篩選結束 %>
+
+<%# 精選物件開始 %>
+<div class="container mt-5">
+      <!-- Swiper -->
+    <div class="swiper-container mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=1" alt=""></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=2" alt=""></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=3" alt=""></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=4" alt=""></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=5" alt=""></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=6" alt=""></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+</div>
+<%# 精選物件結束 %>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
