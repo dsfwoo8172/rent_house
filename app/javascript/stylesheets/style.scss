@@ -1,0 +1,52 @@
+// custom text size and weight
+.custom-size{
+  // font-size: 18px;
+  font-weight: 500;
+}
+.navbar{
+  box-shadow: 0px -2px 8px 0px;
+}
+.custom-link{
+  display: block;
+  padding: .5rem 1rem;
+  color: #000;
+  text-decoration: none;
+  transition: color .15s;
+  position: relative;
+  &::before{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 8%;
+    background: #ff8100;
+    opacity: 0;
+    transition: all .15s;
+  }
+  &:hover::before{
+    opacity: 1;
+  }
+
+  &:hover{
+    color: #ff8100;
+  }
+}
+a.nav-link:hover{
+  color: #ff8100 !important;
+}
+.divide-line{
+  display: inline-block;
+  height: 15px;
+  width: 1px;
+  border-right: 1px solid rgba(0,0,0, .55);
+}
+
+.search-btn{
+  max-width: 125px;
+  width: 100%;
+  color: #fff;
+  background: #ff8100;
+  border: 1px solid #ff8100;
+}
