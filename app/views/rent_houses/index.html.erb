@@ -77,30 +77,73 @@
 <%# 條件篩選結束 %>
 
 <%# 精選物件開始 %>
-<div class="container mt-5">
-      <!-- Swiper -->
-    <div class="swiper-container mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=1" alt=""></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=2" alt=""></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=3" alt=""></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=4" alt=""></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=5" alt=""></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/200/300?random=6" alt=""></div>
+<div class="container d-flex align-items-end justify-content-between pt-4 pb-2 px-0">
+  <h5 class="mb-0">精選推薦</h5>
+  <span>我也要出現在這裡<i class="fas fa-angle-right ms-2"></i></span>
+</div>
+<div class="container border-start border-end border-bottom custom-border-top p-4 position-relative">
+  <!-- Swiper -->
+  <div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+    <% 15.times.each_with_index do |index| %>
+      <div class="swiper-slide">
+        <div class="col">
+          <a href="" class="text-decoration-none">
+            <div class="card h-100 border-0 text-dark">
+              <img src="https://picsum.photos/150/150?random=<%= index + 1 %>" alt="">
+              <div class="card-body text-start p-0 pt-1">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card </p>
+                <span><em class="fs-4 fw-bold" style="color: #ff8100"><%= rand(8000..30000) %></em>元/月</span>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
+    <% end %>
     </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <%# <div class="swiper-pagination"></div> %>
+  </div>
 </div>
 <%# 精選物件結束 %>
+<div class="container px-0 mt-4 d-flex">
+  <div class="w-75">
+  <a href="#" class="text-decoration-none text-dark">
+    <div class="card border-0 border-bottom">
+      <div class="row g-0">
+        <div class="col-md-3">
+          <img src="https://picsum.photos/150/100?random=20" class="img-fluid rounded-start w-100" alt="...">
+        </div>
+        <div class="col-md-9 d-flex align-items-center">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p>獨立套房<span class="px-2">|</span>11坪<span class="px-2">|</span>樓層: 3/4</p>
+            <p class="card-text">萬華區-康定路</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+          <div class="price pe-5">
+            <span><em class="fs-4 fw-bold" style="color: #ff8100"><%= rand(8000..30000) %></em>元/月</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  </div>
+  <div class="w-25 ps-4">
+    <button class="w-100 fs-3 py-2" style="border: 1px solid #ff8100; background: #fff; color: #ff8100">刊登出租</button>
+  </div>
+</div>
+
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
   var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
+    slidesPerView: 5,
     spaceBetween: 30,
-    slidesPerGroup: 3,
+    slidesPerGroup: 5,
     loop: true,
     loopFillGroupWithBlank: true,
     pagination: {
