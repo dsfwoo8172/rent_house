@@ -1,15 +1,15 @@
-class RentHousesController < ApplicationController
-  before_action :set_rent_house, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 house
+class RentItemsController < ApplicationController
+  before_action :set_rent_item, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 item
   def index
-    # @rents = RentHouse.all #撈出所有物件
+    @rent_items = RentItem.all.page(params[:page]).per(30) #撈出所有物件 每頁三十筆資料
   end
   
   def new
-    @rent = RentHouse.new
+    @rent = RentItem.new
   end
 
   def create
-    @rent = RentHouse.new(rent_params)
+    @rent = RentItem.new(rent_params)
     if @rent.save!
       redirect_to rent_houses_path, notice: "#{@rent.title} 創建成功!" # 創建成功後轉址給訊息
     else
@@ -38,11 +38,14 @@ class RentHousesController < ApplicationController
   private
 
   def rent_params
-    params.require(:rent_house).permit()
+    # 白名單
+    params.require(:rent_item).permit(:small_img, :show_url, :title, :address,
+                                       :area, :price, :county, :type, :size, :floor,
+                                       :specification, :user_id)
   end
 
-  def set_rent_house
-    @rent = RentHouse.find_by(id: params[:id])
+  def set_rent_item
+    @rent = RentItem.find_by(id: params[:id])
   end
   
 end
