@@ -1,0 +1,3 @@
+class RentItem < ApplicationRecord
+  belongs_to :user, optional: true
+end

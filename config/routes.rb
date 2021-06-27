@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'rent_houses#index'
-  resources :rent_houses
+  root 'rent_items#index'
+  resources :rent_items
   
   get '/user/sign_up', to: 'registrations#new'
   post '/user/sign_up', to: 'registrations#create'
