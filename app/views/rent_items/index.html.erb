@@ -94,7 +94,7 @@
               <div class="card-body text-start p-0 pt-1">
                 <h5 class="card-title fs-6"><%= item.title.truncate(15) %></h5>
                 <p class="card-text"></p>
-                <span><%= item.price %></span>
+                <p><%= price_maker(item.price) %></p>
               </div>
             </div>
           </a>
@@ -125,18 +125,21 @@
               <p class="card-text"><small class="text-muted"><%= item.created_at.to_s.split(' ')[0] %></small></p>
             </div>
             <div class="price pe-5">
-              <span><%= item.price %></span>
+              <span><%= price_maker(item.price) %></span>
             </div>
           </div>
         </div>
       </div>
     </a>
   <% end %>
+  <%= paginate @rent_items, window: 4 %>
   </div>
   <div class="w-25 ps-4">
     <button class="w-100 fs-3 py-2" style="border: 1px solid #ff8100; background: #fff; color: #ff8100">刊登出租</button>
   </div>
 </div>
+
+
 
 
 

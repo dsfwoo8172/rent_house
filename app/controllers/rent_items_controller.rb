@@ -1,7 +1,7 @@
 class RentItemsController < ApplicationController
   before_action :set_rent_item, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 item
   def index
-    @rent_items = RentItem.all #撈出所有物件
+    @rent_items = RentItem.all.page(params[:page]).per(30) #撈出所有物件 每頁三十筆資料
   end
   
   def new

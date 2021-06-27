@@ -69,6 +69,19 @@ a.nav-link:hover{
   background: #ff8100;
   border: 1px solid #ff8100;
 }
+.page-item.disabled .page-link,
+.page-link{
+  border: none;
+  margin-right: 5px;
+  background: #f5f5f5;
+  color: #000;
+}
+
+.page-item.active .page-link{
+  background: #ff8100;
+  border-color: #ff8100;
+  color: #fff;
+}
 
 // 輪播 css
 .swiper-container {
