@@ -1,0 +1,79 @@
+
+<%# 條件篩選開始 %>
+<%# 前端通過 params %>
+<% params.permit! %>
+<div class="container bg-light mt-5">
+  <div class="accordion" id="accordionExample">
+    <div class="d-flex align-items-center pt-3">
+      <p class="mb-0 me-3 fw-bold">位置:</p>
+      <div class="accordion-item bg-light border-0 me-3">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            台北市
+          </button>
+        </h2>
+      </div>
+      <div class="accordion-item bg-light border-0 me-3">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            按鄉鎮選擇
+          </button>
+        </h2>
+      </div>
+    </div>
+
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+  </div>
+  
+  <div class="type pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">類型:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <%= link_to '整層住家', rent_items_path(q: {room_type_eq: '整層住家'}.merge(query.except(:room_type_eq))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '獨立套房', rent_items_path(q: {room_type_eq: '獨立套房'}.merge(query.except(:room_type_eq))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '分租套房', rent_items_path(q: {room_type_eq: '分租套房'}.merge(query.except(:room_type_eq))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '雅房', rent_items_path(q: {room_type_eq: '雅房'}.merge(query.except(:room_type_eq))), class: 'nav-link p-0 px-2 text-dark' %>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">租金:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <%= link_to '5000元以下', rent_items_path(q: ({price_lteq: '5000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '5000-10000元', rent_items_path(q: ({price_gteq: '5000', price_lteq: '10000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '10000-20000元', rent_items_path(q: ({price_gteq: '10000', price_lteq: '20000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '20000-30000元', rent_items_path(q: ({price_gteq: '20000', price_lteq: '30000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '30000-40000元', rent_items_path(q: ({price_gteq: '30000', price_lteq: '40000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '40000-60000元', rent_items_path(q: ({price_gteq: '40000', price_lteq: '60000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '60000元以上', rent_items_path(q: ({price_gteq: '60000'}.merge(query.except(:price_gteq, :price_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">格局:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <%= link_to '1房', rent_items_path(q: ({specification_cont: '1房'}.merge(query.except(:specification_cont)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '2房', rent_items_path(q: ({specification_cont: '2房'}.merge(query.except(:specification_cont)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '3房', rent_items_path(q: ({specification_cont: '3房'}.merge(query.except(:specification_cont)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '4房', rent_items_path(q: ({specification_cont: '4房'}.merge(query.except(:specification_cont)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '5房', rent_items_path(q: ({specification_cont: '5房'}.merge(query.except(:specification_cont)))), class: 'nav-link p-0 px-2 text-dark' %>
+  </div>
+
+  <div class="rent pt-2 d-flex align-items-center">
+    <p class="mb-0 me-3 fw-bold">坪數:</p>
+    <a href="#" class="nav-link p-0 px-2 text-dark">不限</a>
+    <%= link_to '10-20坪', rent_items_path(q: ({size_gteq: '10', size_lteq: '20'}.merge(query.except(:size_gteq, :size_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '20-30坪', rent_items_path(q: ({size_gteq: '20', size_lteq: '30'}.merge(query.except(:size_gteq, :size_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '30-40坪', rent_items_path(q: ({size_gteq: '30', size_lteq: '40'}.merge(query.except(:size_gteq, :size_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '40-50坪', rent_items_path(q: ({size_gteq: '40', size_lteq: '50'}.merge(query.except(:size_gteq, :size_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+    <%= link_to '50坪以上', rent_items_path(q: ({size_gteq: '50'}.merge(query.except(:size_gteq, :size_lteq)))), class: 'nav-link p-0 px-2 text-dark' %>
+  </div>
+</div>
+<%# 條件篩選結束 %>
