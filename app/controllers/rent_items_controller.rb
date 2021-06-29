@@ -1,7 +1,10 @@
 class RentItemsController < ApplicationController
   before_action :set_rent_item, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 item
   def index
-    @rent_items = RentItem.all.page(params[:page]).per(30) #撈出所有物件 每頁三十筆資料
+    @query = params[:q] || {}
+    @search = RentItem.ransack(@query)
+    @rent_items = @search.result.page(params[:page]).per(30) #撈出所有物件 每頁三十筆資料
+    
   end
   
   def new
@@ -41,7 +44,7 @@ class RentItemsController < ApplicationController
     # 白名單
     params.require(:rent_item).permit(:small_img, :show_url, :title, :address,
                                        :area, :price, :county, :type, :size, :floor,
-                                       :specification, :user_id)
+                                       :specification, :user_id, :q)
   end
 
   def set_rent_item
