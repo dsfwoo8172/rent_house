@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_06_26_154244) do
     t.string "title"
     t.string "address"
     t.string "area"
-    t.string "price"
+    t.integer "price"
     t.string "county"
     t.string "room_type"
-    t.string "size"
+    t.integer "size"
     t.string "floor"
     t.string "specification"
     t.integer "user_id", null: false

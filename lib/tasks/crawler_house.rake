@@ -40,16 +40,17 @@ task create_house_data: :environment do
           title: house.h3.a.text, # 物件名稱
           address: house.ps[1].text,  # 物件地址
           area: house.ps[1].text.split("-")[0], # 物件地區
-          price: house.div(class: 'price').text, # 物件價格
-          county: browser.spans(class: 'search-location-span')[0].text.strip # 縣市名稱
+          price: house.div(class: 'price').text.split(' ')[0].gsub(',','').to_i, # 物件價格
+          county: browser.spans(class: 'search-location-span')[0].text.strip,
+          user_id: User.first.id # 縣市名稱
         }
         
         # 拆出房間種類，坪數，樓層，格局
         house.ps[0].text.split("|").map(&:strip).each do |str|
           if str =~ /套房|雅房|住家/
-            data[:type] = str
+            data[:room_type] = str
           elsif str =~ /坪/
-            data[:size] = str
+            data[:size] = str.to_i
           elsif str =~ /樓層/
             data[:floor] = str
           else
@@ -66,11 +67,10 @@ task create_house_data: :environment do
     end
     index = 0
     city += 1
-  end
-  
-  byebug
 
-  rent_items.each {|item| RentItem.create(item)}
+    rent_items.each {|item| RentItem.create(item)}
+    rent_items = []
+  end
 
 
 

@@ -6,10 +6,10 @@ class CreateRentItems < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :address
       t.string :area
-      t.string :price
+      t.integer :price
       t.string :county
       t.string :room_type
-      t.string :size
+      t.integer :size
       t.string :floor
       t.string :specification
       t.belongs_to :user, null: false, foreign_key: true
