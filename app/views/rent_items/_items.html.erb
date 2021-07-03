@@ -1,0 +1,24 @@
+<a href="#" class="text-decoration-none text-dark">
+  <div class="card card-custom-hover border-0 border-bottom">
+    <div class="row g-0">
+      <div class="col-md-3 p-3">
+        <%= image_tag item.small_img, class: 'img-fluid rounded-start w-100' %>
+      </div>
+      <div class="col-md-9 d-flex align-items-center">
+        <div class="card-body">
+          <h5 class="card-title"><%= item.title %></h5>
+          <% if item.specification %>
+          <p><%= item.room_type %><span class="px-2">|</span><%= item.specification %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
+          <% else %>
+          <p><%= item.room_type %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
+          <% end %>
+          <p class="card-text"><%= item.address %></p>
+          <p class="card-text"><small class="text-muted"><%= item.created_at.to_s.split(' ')[0] %></small></p>
+        </div>
+        <div class="price pe-5">
+          <span><span class="me-2 fw-bolder fs-4" style="color: #ff4313"><%= item.price %></span> 元/月</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

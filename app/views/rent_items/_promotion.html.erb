@@ -1,0 +1,13 @@
+ <!-- Swiper -->
+  <div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+    <% rent_items.sample(15).each do |item| %>
+      <div class="swiper-slide">
+        <%= render 'swiper_item', item: item %>
+      </div>
+    <% end %>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <%# <div class="swiper-pagination"></div> %>
+  </div>

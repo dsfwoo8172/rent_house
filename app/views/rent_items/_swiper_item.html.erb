@@ -1,0 +1,12 @@
+ <div class="col">
+  <a href="" class="text-decoration-none">
+    <div class="card h-100 border-0 text-dark">
+      <%= image_tag item.small_img, class: 'img-fluid w-100'%>
+      <div class="card-body text-start p-0 pt-1">
+        <h5 class="card-title fs-6"><%= item.title.truncate(15) %></h5>
+        <p class="card-text"></p>
+        <p><span class="me-2 fw-bolder fs-4" style="color: #ff4313"><%= item.price %></span> 元/月</p>
+      </div>
+    </div>
+  </a>
+</div>
