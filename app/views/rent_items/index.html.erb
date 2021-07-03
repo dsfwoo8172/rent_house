@@ -1,5 +1,5 @@
 <%# 搜尋條件 %>
-<%= render 'shared/search_options', query: @query %>
+<%= render 'shared/search_options', query: @query, counties: @counties %>
 
 <%# 精選物件開始 %>
 <div class="container d-flex align-items-end justify-content-between pt-4 pb-2 px-0">
@@ -7,61 +7,17 @@
   <span>我也要出現在這裡<i class="fas fa-angle-right ms-2"></i></span>
 </div>
 <div class="container border-start border-end border-bottom custom-border-top p-4 position-relative">
-  <!-- Swiper -->
-  <div class="swiper-container mySwiper">
-    <div class="swiper-wrapper">
-    <% @rent_items.sample(15).each do |item| %>
-      <div class="swiper-slide">
-        <div class="col">
-          <a href="" class="text-decoration-none">
-            <div class="card h-100 border-0 text-dark">
-              <%= image_tag item.small_img, class: 'img-fluid w-100'%>
-              <div class="card-body text-start p-0 pt-1">
-                <h5 class="card-title fs-6"><%= item.title.truncate(15) %></h5>
-                <p class="card-text"></p>
-                <p><span class="me-2 fw-bolder fs-4" style="color: #ff4313"><%= item.price %></span> 元/月</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    <% end %>
-    </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <%# <div class="swiper-pagination"></div> %>
-  </div>
+  <%= render 'promotion', rent_items: @rent_items %>
 </div>
 <%# 精選物件結束 %>
 <div class="container px-0 mt-4 d-flex">
-  <div class="w-75">
-  <% @rent_items.each do |item| %>
-    <a href="#" class="text-decoration-none text-dark">
-      <div class="card card-custom-hover border-0 border-bottom">
-        <div class="row g-0">
-          <div class="col-md-3 p-3">
-            <%= image_tag item.small_img, class: 'img-fluid rounded-start w-100' %>
-          </div>
-          <div class="col-md-9 d-flex align-items-center">
-            <div class="card-body">
-              <h5 class="card-title"><%= item.title %></h5>
-              <% if item.specification %>
-              <p><%= item.room_type %><span class="px-2">|</span><%= item.specification %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
-              <% else %>
-              <p><%= item.room_type %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
-              <% end %>
-              <p class="card-text"><%= item.address %></p>
-              <p class="card-text"><small class="text-muted"><%= item.created_at.to_s.split(' ')[0] %></small></p>
-            </div>
-            <div class="price pe-5">
-              <span><span class="me-2 fw-bolder fs-4" style="color: #ff4313"><%= item.price %></span> 元/月</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  <% end %>
-  <%= paginate @rent_items, window: 4 %>
+  <div class="w-75" id="rent-list">
+    <% @rent_items.each do |item| %>
+      <%= render 'items', item: item %>
+    <% end %>
+    <div id="paginator">
+    <%= paginate @rent_items %>
+  </div>
   </div>
   <div class="w-25 ps-4">
     <button class="w-100 fs-3 py-2" style="border: 1px solid #ff8100; background: #fff; color: #ff8100">刊登出租</button>

@@ -61,6 +61,15 @@ a.nav-link:hover{
   width: 1px;
   border-right: 1px solid rgba(0,0,0, .55);
 }
+.nav-link.active{
+  background: #ff8100;
+  font-weight: bolder;
+  border-radius: 10px;
+  color: #fff !important;
+  &:hover{
+    color: #fff !important;
+  }
+}
 
 .search-btn{
   max-width: 125px;
