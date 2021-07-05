@@ -2,6 +2,7 @@
 <%# 條件篩選開始 %>
 <%# 前端通過 params %>
 <% params.permit! %>
+<%= @query %>
 <div class="container bg-light mt-5">
   <div class="accordion" id="accordionExample">
     <div class="d-flex align-items-center pt-3">
@@ -16,7 +17,7 @@
       <div class="accordion-item bg-light border-0 me-3">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            按鄉鎮選擇
+            <%= query[:area_eq] || "全區"%>
           </button>
         </h2>
       </div>
@@ -25,16 +26,18 @@
     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <% counties.each_with_index do |county, index| %>
-            <%#= check_box_tag "q[county_eq][#{index}][]", county %>
-            <%#= label_tag "q[county_eq][#{index}][]", county, class: 'me-2' %>
             <%= link_to county, rent_items_path(q: {county_eq: county}.merge(query.except(:county_eq))), class: 'nav-link p-0 px-2 text-dark d-inline' %>
           <% end %>
         </div>
       </div>
 
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <div class="accordion-body row">
+          <% areas_query = [] %>
+          <% areas.each_with_index do |area, index| %>
+            <div class="col-1"><%= link_to area, rent_items_path(q: {area_eq: areas_query << area}), class: 'nav-link text-dark d-inline' %></div>
+          <% end %>
+       
         </div>
       </div>
   </div>
