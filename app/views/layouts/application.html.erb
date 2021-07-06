@@ -20,9 +20,10 @@
   </head>
 
   <body>
+
     <%= render 'shared/nav' %>
     <%= render 'shared/flash' %>
-    <%= render 'shared/search' %>
+    <%= render 'shared/search' if params[:controller] == 'rent_items'%>
     <%= yield %>
     <%= render 'shared/footer' %>
       
