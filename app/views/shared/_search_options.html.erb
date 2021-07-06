@@ -2,7 +2,6 @@
 <%# 條件篩選開始 %>
 <%# 前端通過 params %>
 <% params.permit! %>
-<%= @query %>
 <div class="container bg-light mt-5">
   <div class="accordion" id="accordionExample">
     <div class="d-flex align-items-center pt-3">
@@ -10,7 +9,7 @@
       <div class="accordion-item bg-light border-0 me-3">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button collapsed p-0 px-2 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <%= query[:county_eq] || "全部縣市" %>
+            <%= query[:county_eq] || "台北市" %>
           </button>
         </h2>
       </div>
@@ -24,18 +23,17 @@
     </div>
 
     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+        <div class="accordion-body row">
           <% counties.each_with_index do |county, index| %>
-            <%= link_to county, rent_items_path(q: {county_eq: county}.merge(query.except(:county_eq))), class: 'nav-link p-0 px-2 text-dark d-inline' %>
+            <div class="col-1"><%= link_to county, rent_items_path(q: {county_eq: county}.merge(query.except(:county_eq, :area_eq))), class: 'nav-link text-dark d-inline' %></div>
           <% end %>
         </div>
       </div>
 
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body row">
-          <% areas_query = [] %>
           <% areas.each_with_index do |area, index| %>
-            <div class="col-1"><%= link_to area, rent_items_path(q: {area_eq: areas_query << area}), class: 'nav-link text-dark d-inline' %></div>
+            <div class="col-1"><%= link_to area, rent_items_path(q: {area_eq: area}.merge(query.except(:area_eq))), class: 'nav-link text-dark d-inline' %></div>
           <% end %>
        
         </div>

@@ -1,9 +1,9 @@
 class RentItemsController < ApplicationController
   before_action :set_rent_item, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 item
   def index
-    @query = params[:q] || {}
+    @query = params[:q].blank? ? {county_eq: '台北市'} : params[:q] # 給 default
     @search = RentItem.ransack(@query)
-    @rent_items = @search.result.page(params[:page]).per(30) #撈出所有物件 每頁三十筆資料
+    @rent_items = @search.result.page(params[:page]).per(30) # 撈出 30 筆資料
     @counties = RentItem.all.map(&:county).uniq # 撈出所有縣市
     @areas = RentItem.get_areas(@query) # 撈區域
   end
