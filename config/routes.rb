@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'rent_items#index'
   resources :rent_items
-  
+  resources :manages, only: %i[index]
   get '/user/sign_up', to: 'registrations#new'
   post '/user/sign_up', to: 'registrations#create'
 
