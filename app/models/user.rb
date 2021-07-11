@@ -16,17 +16,7 @@ class User < ApplicationRecord
                           too_long: '密碼最多 12 位數(含英文)'
                         },
                         confirmation: { message: '與密碼不符合' }
-
-  # validate :password_confirmation_matches_password
   validates :phone, presence: { message: '不能空白' }, uniqueness: true, length: { minimum: 10, too_short: '電話號碼需要十位數' }
   
-  
-
-  # def password_confirmation_matches_password
-  #   if password != password_confirmation=
-  #     errors.add(:password_confirmation, '與密碼不符合')
-  #   end
-  # end
-  
-  
+  has_many :rent_items
 end

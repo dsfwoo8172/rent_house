@@ -4,8 +4,8 @@ class RentItemsController < ApplicationController
     @query = params[:q].blank? ? {county_eq: '台北市'} : params[:q] # 給 default
     @search = RentItem.ransack(@query)
     @rent_items = @search.result.page(params[:page]).per(30) # 撈出 30 筆資料
-    @counties = RentItem.all.map(&:county).uniq # 撈出所有縣市
-    @areas = RentItem.get_areas(@query) # 撈區域
+    @counties = RentItem.get_counties # 撈出所有縣市
+    @areas = RentItem.under_counties_of_areas(@query[:county_eq]) # 撈出該縣市的區域
   end
   
   def new
