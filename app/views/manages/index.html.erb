@@ -17,8 +17,8 @@
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <div class="self-info">
           <p>歡迎回來， <%= @user.email %></p>
-          <p>電子郵件: <%= link_to '修改', '', class: 'ms-2' %></p>
-          <p>物件管理: <span class="ms-2 me-5">收藏物件(0)</span><span class="me-5">收藏物件(0)</span><span class="me-5">收藏物件(0)</span><span class="me-5">收藏物件(0)</span></p>
+          <p>修改密碼: <%= link_to '修改', user_edit_password_path, class: 'ms-2' %></p>
+          <p>物件管理: <span class="ms-2 me-5">收藏物件(0)</span></p>
           <p>站內提醒: <span class="ms-2 me-5">留言/回覆(0)</span></p>
         </div>
         <div class="my-app border">
