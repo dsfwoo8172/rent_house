@@ -1,6 +1,6 @@
-<h1>更改密碼</h1>
-<%= form_with model: Current.user, url: user_edit_password_path do |f| %>
-  
+
+<%= form_with model: Current.user, url: user_edit_password_path, html: {class: 'w-50 mx-auto pt-5'} do |f| %>
+  <h1 class="text-center">更改密碼</h1>
   <% if f.object.errors.any? %>
     <div class="alert alert-danger">
       <% f.object.errors.full_messages.each do |msg| %>
@@ -18,5 +18,8 @@
     <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '請再輸入一次密碼' %>
   </div>
   
-  <%= f.button '更新密碼', class: 'btn btn-primary' %>
+  <div class="d-flex justify-content-between">
+    <%= f.button '更新密碼', class: 'btn btn-primary' %>
+    <%= link_to '返回會員中心', manages_path, class: 'btn btn-danger' %>
+  </div>
 <% end %>

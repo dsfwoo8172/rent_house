@@ -1,6 +1,6 @@
-<h1>註冊</h1>
-<%= form_with model: @user, url: user_sign_up_path do |f| %>
-  
+
+<%= form_with model: @user, url: user_sign_up_path, html: {class: 'w-50 mx-auto pt-5'} do |f| %>
+  <h1 class="text-center">註冊</h1>
   <% if f.object.errors.any? %>
     <div class="alert alert-danger">
       <% f.object.errors.full_messages.each do |msg| %>

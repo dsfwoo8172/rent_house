@@ -24,7 +24,9 @@
     <%= render 'shared/nav' %>
     <%= render 'shared/flash' %>
     <%= render 'shared/search' if params[:controller] == 'rent_items'%>
-    <%= yield %>
+    <div class="container">
+        <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
       
   </body>
