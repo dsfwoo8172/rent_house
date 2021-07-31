@@ -1,3 +1,9 @@
+html, body{
+  height: 100%;
+}
+.container{
+  min-height: calc(100% - 230px)
+}
 // custom text size and weight
 .custom-size{
   // font-size: 18px;
