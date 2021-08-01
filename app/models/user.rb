@@ -19,4 +19,14 @@ class User < ApplicationRecord
   validates :phone, presence: { message: '不能空白' }, uniqueness: true, length: { minimum: 10, too_short: '電話號碼需要十位數' }
   
   has_many :rent_items
+  has_many :favourites
+  has_many :my_favourite_items, through: :favourites, source: :rent_item
+
+  def toggle_fav(item)
+    if my_favourite_items.include?(item)
+      my_favourite_items.destroy(item)
+    else
+      my_favourite_items << item
+    end
+  end
 end

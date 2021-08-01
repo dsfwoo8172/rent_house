@@ -1,1 +1,1 @@
-import './custom'
+import './favouriteItems'
