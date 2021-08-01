@@ -4,6 +4,18 @@ html, body{
 .container{
   min-height: calc(100% - 230px)
 }
+.fav{
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  border-radius: 100%;
+  font-size: 25px;
+  &:hover{
+    background: #eee;
+  }
+}
 // custom text size and weight
 .custom-size{
   // font-size: 18px;

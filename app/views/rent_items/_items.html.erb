@@ -1,5 +1,11 @@
 <a href="#" class="text-decoration-none text-dark d-block position-relative">
-  <%= button_to 'like', '#', class: 'position-absolute', style: 'top:20px; right:20px; z-index: 1' %>
+  <button class="position-absolute fav" data-item-id="<%= item.id %>">
+    <% if Current.user.my_favourite_items.ids.include?(item.id) %>
+    <span class="fas fa-heart"></span>
+    <% else %>
+    <span class="far fa-heart"></span>
+    <% end %>
+  </button>
   <div class="card card-custom-hover border-0 border-bottom">
     <div class="row g-0">
       <div class="col-md-3 p-3">

@@ -1,16 +1,16 @@
 class RentItemsController < ApplicationController
-  before_action :set_rent_item, only: %i[show edit update destroy] # 只有這四個 action 會需要知道 item
+  before_action :set_rent_item, only: %i[show edit update destroy favourite]
   def index
     @query = params[:q].blank? ? {county_eq: '台北市'} : params[:q] # 給 default
     @search = RentItem.ransack(@query)
-    @rent_items = @search.result.page(params[:page]).per(30) # 撈出 30 筆資料
+    @rent_items = @search.result.includes(:user).page(params[:page]).per(30) # 撈出 30 筆資料
     @counties = RentItem.get_counties # 撈出所有縣市
     @areas = RentItem.under_counties_of_areas(@query[:county_eq]) # 撈出該縣市的區域
   end
   
   def new
     @rent = RentItem.new
-  end
+end
 
   def create
     @rent = RentItem.new(rent_params)
@@ -36,6 +36,11 @@ class RentItemsController < ApplicationController
   def destroy
     @rent.destroy
     redirect_to rent_houses_path, notice: "#{@rent.title} 刪除成功!" # 刪除成功轉址給訊息
+  end
+
+  def favourite
+    Current.user.toggle_fav(@rent)
+    render json: { message: 'OK!', status: @rent.favourited_by?(Current.user) }
   end
 
 
