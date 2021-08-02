@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
     <% rent_items.sample(15).each do |item| %>
       <div class="swiper-slide">
-        <%= render 'swiper_item', item: item %>
+        <%= render 'rent_items/swiper_item', item: item %>
       </div>
     <% end %>
     </div>
@@ -11,3 +11,22 @@
     <div class="swiper-button-prev"></div>
     <%# <div class="swiper-pagination"></div> %>
   </div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 5,
+    spaceBetween: 30,
+    slidesPerGroup: 5,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>

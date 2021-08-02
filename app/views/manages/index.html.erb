@@ -1,92 +1,129 @@
-<div style="height: 100vh">
-  <div class="col-8 mx-auto pt-5">
-    <h2 class="pb-4">房客/買家</h2>
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">我的首頁</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">我的收藏</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">帳號管理</button>
-      </li>
-    </ul>
+<div class="col-10 mx-auto pt-5">
+  <h2 class="pb-4">房客/買家</h2>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="my-index-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">我的首頁</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="my-fav-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">我的收藏</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">帳號管理</button>
+    </li>
+  </ul>
 
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div class="self-info">
-          <p>歡迎回來， <%= @user.email %></p>
-          <p>修改密碼: <%= link_to '修改', user_edit_password_path, class: 'ms-2' %></p>
-          <p>物件管理: <span class="ms-2 me-5">收藏物件(0)</span></p>
-          <p>站內提醒: <span class="ms-2 me-5">留言/回覆(0)</span></p>
-        </div>
-        <div class="my-app border">
-          <p class="border-bottom ps-4 py-2 fw-bold">我的應用</p>
-          <div class="row mx-auto" style="width: 85%">
-            <div class="col-4 d-flex align-items-center">
-              <div class="img">
-                <img src="https://fakeimg.pl/50x50/">
-              </div>
-              <div>
-                <p class="mb-0">刊登求租</p>
-                <a href="#">立即出租</a>
-              </div>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="self-info">
+        <p>歡迎回來， <%= @user.email %></p>
+        <p>修改密碼: <%= link_to '修改', user_edit_password_path, class: 'ms-2' %></p>
+        <%# <p>物件管理: <span class="ms-2 me-5">收藏物件(0)</span></p> %>
+        <p>物件管理: <a href="#" class="ms-2 me-5 fav-link">收藏物件(<%= Current.user.my_favourite_items.count%>)</a></p> 
+        <p>站內提醒: <span class="ms-2 me-5">留言/回覆(0)</span></p>
+      </div>
+
+      <div class="my-app border">
+        <p class="border-bottom ps-4 py-2 fw-bold">我的應用</p>
+        <div class="row mx-auto" style="width: 85%">
+          <div class="col-4 d-flex align-items-center">
+            <div class="img">
+              <img src="https://fakeimg.pl/50x50/">
             </div>
-
-            <div class="col-4 d-flex align-items-center">
-              <div class="img">
-                <img src="https://fakeimg.pl/50x50/">
-              </div>
-              <div>
-                <p class="mb-0">刊登求租</p>
-                <a href="#">立即出租</a>
-              </div>
-            </div>
-
-            <div class="col-4 d-flex align-items-center">
-              <div class="img">
-                <img src="https://fakeimg.pl/50x50/">
-              </div>
-              <div>
-                <p class="mb-0">刊登求租</p>
-                <a href="#">立即出租</a>
-              </div>
-            </div>
-
-            <div class="col-4 d-flex align-items-center pt-5 pb-3">
-              <div class="img">
-                <img src="https://fakeimg.pl/50x50/">
-              </div>
-              <div>
-                <p class="mb-0">刊登求租</p>
-                <a href="#">立即出租</a>
-              </div>
-            </div>
-
-            <div class="col-4 d-flex align-items-center pt-5 pb-3">
-              <div class="img">
-                <img src="https://fakeimg.pl/50x50/">
-              </div>
-              <div>
-                <p class="mb-0">刊登求租</p>
-                <a href="#">立即出租</a>
-              </div>
+            <div>
+              <p class="mb-0">刊登求租</p>
+              <a href="#">立即出租</a>
             </div>
           </div>
-        </div>
 
-        <div class="my-fav border mt-3" style="border-color: #ff8100 !important">
-          <p class="border-bottom ps-4 py-2 fw-bold" style="border-color: #ff8100 !important">我的收藏</p>
-          <div class="content d-flex align-items-center justify-content-center py-5">
-            <p>趕緊去新增收藏吧 <a href="#">逛逛</a></p>
+          <div class="col-4 d-flex align-items-center">
+            <div class="img">
+              <img src="https://fakeimg.pl/50x50/">
+            </div>
+            <div>
+              <p class="mb-0">刊登求租</p>
+              <a href="#">立即出租</a>
+            </div>
+          </div>
+
+          <div class="col-4 d-flex align-items-center">
+            <div class="img">
+              <img src="https://fakeimg.pl/50x50/">
+            </div>
+            <div>
+              <p class="mb-0">刊登求租</p>
+              <a href="#">立即出租</a>
+            </div>
+          </div>
+
+          <div class="col-4 d-flex align-items-center pt-5 pb-3">
+            <div class="img">
+              <img src="https://fakeimg.pl/50x50/">
+            </div>
+            <div>
+              <p class="mb-0">刊登求租</p>
+              <a href="#">立即出租</a>
+            </div>
+          </div>
+
+          <div class="col-4 d-flex align-items-center pt-5 pb-3">
+            <div class="img">
+              <img src="https://fakeimg.pl/50x50/">
+            </div>
+            <div>
+              <p class="mb-0">刊登求租</p>
+              <a href="#">立即出租</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-    </div>
-  </div>
-  
 
+      <div class="my-fav border mt-3" style="border-color: #ff8100 !important; overflow: auto">
+        <p class="border-bottom ps-4 py-2 fw-bold" style="border-color: #ff8100 !important">我的收藏</p>
+        <% if Current.user.my_favourite_items.empty? %>
+          <div class="content d-flex align-items-center justify-content-center">
+            <p>趕緊去新增收藏吧 <a href="/">逛逛</a></p>
+          </div>
+        <% else %>
+          <% Current.user.my_favourite_items.each do |item| %>
+            <div class="card mb-3 mx-auto border-0 px-3" style="max-width: 800px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="<%= item.small_img %>" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= item.title %></h5>
+                    <% if item.specification %>
+                    <p><%= item.room_type %><span class="px-2">|</span><%= item.specification %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
+                    <% else %>
+                    <p><%= item.room_type %><span class="px-2">|</span><%= item.size %>坪<span class="px-2">|</span><%= item.floor %></p>
+                    <% end %>
+                    <p class="card-text"><%= item.address %></p>
+                    <p class="card-text"><small class="text-muted"><%= item.created_at.to_s.split(' ')[0] %></small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="promotion position-relative mt-4">
+        <p>888 推薦物件</p>
+        <%= render 'rent_items/promotion', rent_items: @rent_item %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  </div>
 </div>
+
+<script>
+  const favTab = document.getElementById('my-fav-tab')
+  const fabLink = document.querySelector('.fav-link')
+
+  fabLink.addEventListener('click', (e) => {
+    e.preventDefault()
+    favTab.click()
+  })
+</script>
