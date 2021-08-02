@@ -39,8 +39,12 @@ end
   end
 
   def favourite
-    Current.user.toggle_fav(@rent)
-    render json: { message: 'OK!', status: @rent.favourited_by?(Current.user) }
+    if Current.user
+      Current.user.toggle_fav(@rent)
+      render json: { message: 'OK!', status: @rent.favourited_by?(Current.user) }
+    else
+      render json: { message: '請先登入', status: 401 }
+    end
   end
 
 
