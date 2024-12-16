@@ -45,7 +45,7 @@ pipeline {
     post {
         success {
             dingtalk (
-                robot: '浪Live小幫手(測試)@機器人',
+                robot: '4d1055b4-43e9-4536-b445-aa0b80d62c44',
                 type: 'MARKDOWN',
                 text: [
                     '### Build Success',
@@ -58,7 +58,7 @@ pipeline {
         }
         failure {
             dingtalk (
-                robot: '浪Live小幫手(測試)@機器人',
+                robot: '4d1055b4-43e9-4536-b445-aa0b80d62c44',
                 type: 'MARKDOWN',
                 text: [
                     '### Build Failed',
