@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image = 'ruby:3.3'
+                    image 'ruby:3.3'
                 }
             }
             steps {
@@ -18,7 +18,7 @@ pipeline {
         stage('Test') {
             agent {
                 docker {
-                    image = 'ruby:3.3'
+                    image 'ruby:3.3'
                 }
             }
             steps {
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy') {
             agent {
                 docker {
-                    image = 'ruby:3.3'
+                    image 'ruby:3.3'
                 }
             }
             steps {
