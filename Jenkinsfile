@@ -44,10 +44,16 @@ pipeline {
     }
     post {
         success {
-            echo 'Done'
+            dingtalk (
+                robot: '4d1055b4-43e9-4536-b445-aa0b80d62c44',
+                text: ['Build Success']
+            )
         }
         failure {
-            echo 'Failed'
+            dingtalk (
+                robot: '4d1055b4-43e9-4536-b445-aa0b80d62c44',
+                text: ['Build Failed']
+            )
         }
     }
 }
