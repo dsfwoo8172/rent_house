@@ -46,13 +46,27 @@ pipeline {
         success {
             dingtalk (
                 robot: '浪Live小幫手(測試)@機器人',
-                text: ['Build Success']
+                type: 'MARKDOWN',
+                text: [
+                    '### Build Success',
+                    '#### 測試',
+                    '#### 測試',
+                    '#### 測試',
+                    '#### 測試'
+                ]
             )
         }
         failure {
             dingtalk (
                 robot: '浪Live小幫手(測試)@機器人',
-                text: ['Build Failed']
+                type: 'MARKDOWN',
+                text: [
+                    '### Build Failed',
+                    '#### 測試',
+                    '#### 測試',
+                    '#### 測試',
+                    '#### 測試'
+                ]
             )
         }
     }
